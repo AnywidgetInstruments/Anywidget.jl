@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Documentation: supported Julia versions stated as "1.10 and later, tested on
+  1.13" (Kaimon Slate: 1.12 or later); planned work listed with its phase.
 - The README and the documentation state that the package is unofficial and
   not affiliated with the anywidget project.
 

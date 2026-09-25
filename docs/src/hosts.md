@@ -25,7 +25,7 @@ html_page("page.html", anywidget(counter; count = 1), anywidget(counter; count =
 
 [Kaimon Slate](https://github.com/kahliburke/KaimonSlate.jl) is a reactive
 Julia notebook; its SlateAFM extension hosts AFM modules. With
-SlateExtensionsBase loaded (Julia 1.12 or later), Anywidget.jl plugs into it
+SlateExtensionsBase loaded (Julia 1.12 or later, tested on 1.13), Anywidget.jl plugs into it
 through a package extension:
 
 - `@bind w anywidget(mod; count = 0)` binds `w` to the trait dictionary,

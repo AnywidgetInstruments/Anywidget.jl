@@ -14,6 +14,7 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 |---|---|---|
 | 0.1 | 2026-09-25 | First version (phase 0, package 0.0.1) |
 | 0.2 | 2026-09-25 | `AFMModule` renamed `FrontendModule` (AW-MOD-006); unofficial status stated (AW-GEN-004) |
+| 0.3 | 2026-09-25 | "Out of scope" becomes "Planned", with the phases |
 
 ## 1. General
 
@@ -82,7 +83,10 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 | AW-QA-002 | M | The package shall pass Aqua.jl checks. |
 | AW-QA-003 | M | The documentation shall build without warnings and publish `llms.txt` and `llms-full.txt`. |
 
-## Out of scope for now
+## Planned
 
-- Bidirectional hosts (Bonito.jl, Pluto.jl, IJulia comms): next phase.
-- Loading published anywidgets from PyPI (as SlateAFM's `pypi_afm` does).
+Not yet specified as requirements; see the [roadmap](roadmap.md) for the phases.
+
+- Bidirectional hosts (Pluto.jl, Bonito.jl, IJulia comms): phase 1.
+- Loading published anywidgets from PyPI or npm without Python (as SlateAFM's
+  `pypi_afm` does with pip): phase 2.
