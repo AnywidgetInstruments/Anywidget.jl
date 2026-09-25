@@ -7,7 +7,7 @@ using Pkg
 Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
 ```
 
-Julia 1.10 (LTS) and later; the Kaimon Slate integration needs Julia 1.12.
+Julia 1.10 (LTS) and later, tested on 1.13; the Kaimon Slate integration needs Julia 1.12 or later.
 
 ## Modules
 
