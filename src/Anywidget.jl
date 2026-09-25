@@ -11,6 +11,9 @@ binds them to trait dictionaries ([`AbstractAnywidget`](@ref),
 - in Kaimon Slate notebooks, through SlateAFM (package extension on
   SlateExtensionsBase).
 
+Published anywidgets are loaded from PyPI without Python
+([`pypi_anywidget`](@ref)): the wheel and the class source are read as data.
+
 ```julia
 using Anywidget
 counter = FrontendModule("counter"; source = \"\"\"
@@ -22,17 +25,23 @@ anywidget(counter; count = 1)
 module Anywidget
 
 using Base64: base64encode
+using Downloads: Downloads
 using JSON: JSON
+using SHA: SHA
 using UUIDs: uuid4
+using p7zip_jll: p7zip_jll
 
 export FrontendModule, set_asset_base!
 export AbstractAnywidget, afm_module, widget_traits, message_id, anywidget
 export Message, encode_buffer, send_message, set_transport!
 export html_page
+export pypi_module, pypi_anywidget
 
 include("modules.jl")
 include("widgets.jl")
 include("messages.jl")
 include("html.jl")
+include("pylit.jl")
+include("pypi.jl")
 
 end # module

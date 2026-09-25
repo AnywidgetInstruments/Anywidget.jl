@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Published anywidgets from PyPI without Python: `pypi_module` and
+  `pypi_anywidget` download the wheel (SHA-256 checked, cached), find the
+  anywidget classes (with inheritance), and read `_esm`, `_css` and the synced
+  trait defaults from the Python source as text. Tested against drawdata,
+  ipymolstar, lonboard, mosaic-widget, quak and wigglystuff.
+- Dependencies: Downloads, SHA and p7zip_jll (standard libraries).
+
 ### Changed
 
 - **Breaking:** `AFMModule` is renamed `FrontendModule`.

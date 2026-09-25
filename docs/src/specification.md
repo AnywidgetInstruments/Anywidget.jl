@@ -15,14 +15,15 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 | 0.1 | 2026-09-25 | First version (phase 0, package 0.0.1) |
 | 0.2 | 2026-09-25 | `AFMModule` renamed `FrontendModule` (AW-MOD-006); unofficial status stated (AW-GEN-004) |
 | 0.3 | 2026-09-25 | "Out of scope" becomes "Planned", with the phases |
+| 0.4 | 2026-09-25 | Published anywidgets from PyPI without Python (section 7, AW-PYPI-*) |
 
 ## 1. General
 
 | ID | P | Requirement |
 |---|---|---|
 | AW-GEN-001 | M | The package shall run on the current Julia release (1.13) and on the LTS release (1.10). |
-| AW-GEN-002 | M | The core package shall depend only on JSON.jl and on standard libraries; integrations with notebook hosts shall be package extensions. |
-| AW-GEN-003 | M | The package shall not require Python, pip, Node.js or network access, except to load a module given by URL. |
+| AW-GEN-002 | M | The core package shall depend only on JSON.jl and on standard libraries (including p7zip_jll); integrations with notebook hosts shall be package extensions. |
+| AW-GEN-003 | M | The package shall not require Python, pip, Node.js or network access, except to load a module given by URL or a PyPI project. |
 | AW-GEN-004 | M | The documentation shall state that the package is an unofficial, community-maintained Julia host, not affiliated with the anywidget project. |
 
 ## 2. Modules
@@ -75,7 +76,28 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 | AW-SLATE-003 | S | When SlateAFM is loaded, the package shall install a transport sending messages with `SlateAFM.afm_emit`, unless another transport is installed. |
 | AW-SLATE-004 | W | The package won't register its own Slate widget kind: rendering relies on the host shim of SlateAFM. |
 
-## 7. Quality
+## 7. Published anywidgets (PyPI, without Python)
+
+An anywidget published on PyPI is a Python class whose front end is a static
+file of its wheel (a zip archive) or a string in its source. The package reads
+the wheel and the source as data: Python is never run.
+
+| ID | P | Requirement |
+|---|---|---|
+| AW-PYPI-001 | M | The package shall find the wheel of a PyPI project (latest version or a given one) through the PyPI JSON API, preferring a pure-Python wheel (`py3-none-any`). |
+| AW-PYPI-002 | M | The package shall download the wheel, check its SHA-256 against the digest published by the index, and throw an error when they differ. |
+| AW-PYPI-003 | M | The package shall extract the wheel into a cache directory keyed by project, version and digest, and reuse it on later calls. |
+| AW-PYPI-004 | M | The package shall find the anywidget classes of the project by reading its Python source: classes deriving from `anywidget.AnyWidget` (or `AnyWidget`). |
+| AW-PYPI-005 | M | The package shall read the `_esm` and `_css` of a class given as a string literal (plain, raw or triple-quoted), or as a path built from `pathlib.Path(__file__).parent` and string segments, directly or through a module-level variable. |
+| AW-PYPI-006 | M | The package shall read the defaults of the synced traits of a class declared with a literal first argument (`traitlets.Int(0).tag(sync=True)`, `Unicode("x")`, `Bool(True)`, `List([1, 2])`, …); traits whose default cannot be read statically are left to the user. |
+| AW-PYPI-007 | M | When the project has several anywidget classes and none is chosen, or the chosen class is not found, the package shall throw an `ArgumentError` listing the classes. |
+| AW-PYPI-008 | M | When the front end of a class cannot be resolved statically, the package shall throw an error telling to give the module file with `esm`. |
+| AW-PYPI-009 | M | The package shall build a `FrontendModule` of the class (`pypi_module`) and a widget whose traits are the read defaults overridden by the given traits (`pypi_anywidget`). |
+| AW-PYPI-010 | S | The package shall let the index URL and the cache directory be set (`index`, `cache` keywords; `ANYWIDGET_PYPI_INDEX`, `ANYWIDGET_CACHE`). |
+| AW-PYPI-011 | W | The package won't run Python or install the project's Python dependencies. |
+| AW-PYPI-012 | M | The package shall follow inheritance between the classes of the project: a class deriving from an anywidget class is one, and inherits the `_esm`, `_css` and trait defaults it does not redefine; without `class`, the only class having a front end is chosen. |
+
+## 8. Quality
 
 | ID | P | Requirement |
 |---|---|---|
@@ -88,5 +110,4 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 Not yet specified as requirements; see the [roadmap](roadmap.md) for the phases.
 
 - Bidirectional hosts (Pluto.jl, Bonito.jl, IJulia comms): phase 1.
-- Loading published anywidgets from PyPI or npm without Python (as SlateAFM's
-  `pypi_afm` does with pip): phase 2.
+- Published anywidgets from npm by name (esm.sh / jsDelivr URLs already work).

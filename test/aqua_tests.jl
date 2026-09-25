@@ -6,7 +6,7 @@ end
 @testitem "core dependencies (AW-GEN-002)" begin
     using TOML
     project = TOML.parsefile(joinpath(pkgdir(Anywidget), "Project.toml"))
-    @test Set(keys(project["deps"])) ⊆ Set(["JSON", "Base64", "UUIDs"])
+    @test Set(keys(project["deps"])) ⊆ Set(["JSON", "Base64", "UUIDs", "Downloads", "SHA", "p7zip_jll"])
     @test haskey(project["weakdeps"], "SlateExtensionsBase")
 end
 
