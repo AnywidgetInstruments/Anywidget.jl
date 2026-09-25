@@ -1,0 +1,11 @@
+[deps]
+Anywidget = "8fad67a4-a4e5-4856-8218-1f1a0df12dc2"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DocumenterLandingPage = "1c52b33b-3e2f-4e99-b3b5-a6ad63f0d6d2"
+
+[sources]
+Anywidget = {path = ".."}
+
+[compat]
+Documenter = "1"
+DocumenterLandingPage = "0.2"

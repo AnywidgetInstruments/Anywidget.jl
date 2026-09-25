@@ -1,0 +1,35 @@
+name = "Anywidget"
+uuid = "8fad67a4-a4e5-4856-8218-1f1a0df12dc2"
+authors = ["Sébastien Celles <s.celles@gmail.com>"]
+version = "0.0.1"
+
+[deps]
+Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
+
+[weakdeps]
+SlateExtensionsBase = "bc31d39e-4442-48fa-b9ae-1bd99fed63f7"
+
+[extensions]
+AnywidgetSlateExt = "SlateExtensionsBase"
+
+[compat]
+Aqua = "0.8"
+Base64 = "1"
+JSON = "1"
+SlateExtensionsBase = "0.10"
+TOML = "1"
+Test = "1"
+TestItemRunner = "1"
+UUIDs = "1"
+julia = "1.10"
+
+[extras]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+TestItemRunner = "f8b46487-2199-4994-9208-9a1283c18c0a"
+
+[targets]
+test = ["Aqua", "TOML", "Test", "TestItemRunner"]

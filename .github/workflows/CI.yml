@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  test:
+    name: Julia ${{ matrix.version }} - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: "1.10"
+            os: ubuntu-latest
+          - version: "1"
+            os: ubuntu-latest
+          - version: "1"
+            os: macos-latest
+          - version: "1"
+            os: windows-latest
+          - version: nightly
+            os: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ matrix.version }}
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-runtest@v1
+      - uses: julia-actions/julia-processcoverage@v1
+        if: matrix.version == '1' && matrix.os == 'ubuntu-latest'
+      - uses: codecov/codecov-action@v5
+        if: matrix.version == '1' && matrix.os == 'ubuntu-latest'
+        with:
+          files: lcov.info
+          fail_ci_if_error: false
+
+  slate:
+    name: Kaimon Slate extension
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1"
+      - uses: julia-actions/cache@v2
+      - name: Extension tests
+        run: |
+          julia --color=yes --project=test/slate -e 'using Pkg; Pkg.instantiate()'
+          julia --color=yes --project=test/slate test/slate/runtests.jl
+
+  format:
+    name: JuliaFormatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1"
+      - name: Check formatting
+        shell: julia --color=yes {0}
+        run: |
+          using Pkg
+          Pkg.add(name = "JuliaFormatter", version = "2")
+          using JuliaFormatter
+          format(".", overwrite = false) || exit(1)
