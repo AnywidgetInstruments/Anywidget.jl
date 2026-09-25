@@ -30,6 +30,10 @@ features:
     title: Kaimon Slate
     details: "@bind w anywidget(mod; ...) through SlateAFM, with messages and binary buffers from Julia."
     link: /hosts/#Kaimon-Slate
+  - icon: 🐍
+    title: PyPI anywidgets, no Python
+    details: pypi_anywidget("drawdata"; class = "ScatterWidget") reads the wheel and the class source as data.
+    link: /pypi/
   - icon: 📦
     title: A base for widget packages
     details: Subtype AbstractAnywidget and get every host for free, as AnywidgetInstruments.jl does.

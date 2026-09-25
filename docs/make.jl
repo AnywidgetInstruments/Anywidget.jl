@@ -6,6 +6,7 @@ const PAGES = [
     "Home" => "index.md",
     "Getting started" => "getting-started.md",
     "Hosts" => "hosts.md",
+    "PyPI anywidgets" => "pypi.md",
     "Writing a widget package" => "packages.md",
     "API reference" => "api.md",
     "Specification" => "specification.md",

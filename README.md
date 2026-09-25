@@ -47,6 +47,13 @@ w = anywidget(counter; count = 0)      # displays as HTML
 html_page("counter.html", w)
 ```
 
+Anywidgets published on PyPI load without Python: the wheel and the class
+source are read as data.
+
+```julia
+knob = pypi_anywidget("wigglystuff"; class = "Knob", value = 30.0)
+```
+
 Widget packages subtype `AbstractAnywidget`, as
 [AnywidgetInstruments.jl](https://github.com/s-celles/AnywidgetInstruments.jl)
 does, and get every host for free.

@@ -19,5 +19,6 @@ they are not releases.
 
 ## Phase 2 — `0.0.3`: ecosystem
 
-- Loading published anywidgets from PyPI or npm, without Python.
+- Published anywidgets from PyPI, without Python (done ahead of phase 1).
+- Published anywidgets from npm by name.
 - Registration in the General registry.
