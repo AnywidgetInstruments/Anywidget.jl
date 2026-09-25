@@ -1,22 +1,28 @@
 @testmodule Fixtures begin
     using Anywidget
     const DIR = joinpath(@__DIR__, "fixtures")
-    counter() = AFMModule("counter"; dir=DIR, esm="counter.js", css=["counter.css"])
+    counter() = FrontendModule("counter"; dir=DIR, esm="counter.js", css=["counter.css"])
 end
 
 @testitem "modules (AW-MOD-001..004)" setup = [Fixtures] begin
     m = Fixtures.counter()
     @test m.name == "counter"
     @test Anywidget.esm_kind(m) === :file
-    u = AFMModule("remote"; esm="https://esm.sh/some-widget@1", css=["https://example.org/w.css"])
+    u = FrontendModule("remote"; esm="https://esm.sh/some-widget@1", css=["https://example.org/w.css"])
     @test Anywidget.esm_kind(u) === :url
-    s = AFMModule("inline"; source="export default { render() {} };")
+    s = FrontendModule("inline"; source="export default { render() {} };")
     @test Anywidget.esm_kind(s) === :source
-    @test_throws ArgumentError AFMModule("missing"; dir=Fixtures.DIR, esm="nope.js")
-    @test_throws ArgumentError AFMModule("css"; dir=Fixtures.DIR, esm="counter.js", css=["nope.css"])
-    @test_throws ArgumentError AFMModule("bad name!"; source="")
-    @test_throws ArgumentError AFMModule("relative"; esm="counter.js")      # no dir
-    @test_throws ArgumentError AFMModule("nothing")                          # no module
+    @test_throws ArgumentError FrontendModule("missing"; dir=Fixtures.DIR, esm="nope.js")
+    @test_throws ArgumentError FrontendModule("css"; dir=Fixtures.DIR, esm="counter.js", css=["nope.css"])
+    @test_throws ArgumentError FrontendModule("bad name!"; source="")
+    @test_throws ArgumentError FrontendModule("relative"; esm="counter.js")      # no dir
+    @test_throws ArgumentError FrontendModule("nothing")                          # no module
+end
+
+@testitem "type name (AW-MOD-006)" begin
+    @test isdefined(Anywidget, :FrontendModule)
+    @test Base.isexported(Anywidget, :FrontendModule)
+    @test !isdefined(Anywidget, :AFMModule)          # renamed before any release
 end
 
 @testitem "asset base URL (AW-MOD-005)" setup = [Fixtures] begin

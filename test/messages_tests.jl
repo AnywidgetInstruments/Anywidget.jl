@@ -20,7 +20,7 @@ end
 end
 
 @testitem "transport (AW-MSG-003, AW-MSG-004)" begin
-    m = AFMModule("t"; source="export default { render() {} };")
+    m = FrontendModule("t"; source="export default { render() {} };")
     w = Anywidget.Widget(m; id="w1")
     set_transport!(nothing)
     e = try

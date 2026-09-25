@@ -37,6 +37,11 @@ features:
 ---
 ```
 
+!!! note "Unofficial"
+    Anywidget.jl is a community-maintained Julia host for
+    [anywidget](https://anywidget.dev) front-end modules; it is not affiliated
+    with the anywidget project.
+
 Anywidget.jl hosts [anywidget](https://anywidget.dev) front-end modules (AFM)
 from Julia. An AFM is an ES module exporting `{ initialize?, render }` that
 drives a model provided by the host (`get`, `set`, `save_changes`, `on`, `off`,
@@ -45,7 +50,7 @@ drives a model provided by the host (`get`, `set`, `save_changes`, `on`, `off`,
 ```julia
 using Anywidget
 
-counter = AFMModule("counter"; source = """
+counter = FrontendModule("counter"; source = """
 export default {
   render({ model, el }) {
     const b = document.createElement("button");

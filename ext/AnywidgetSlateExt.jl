@@ -12,7 +12,7 @@ Kaimon Slate integration (AW-SLATE-*), loaded with SlateExtensionsBase.
 """
 module AnywidgetSlateExt
 
-using Anywidget: Anywidget, AbstractAnywidget, AFMModule, Message, afm_module, message_id, widget_traits
+using Anywidget: Anywidget, AbstractAnywidget, FrontendModule, Message, afm_module, message_id, widget_traits
 using SlateExtensionsBase: SlateExtensionsBase, Widget, ext_asset_url, provide_assets!
 
 # The widget kind registered by SlateAFM's host shim (AW-SLATE-004).
@@ -22,18 +22,18 @@ const KIND = "SlateAFM.AFM"
 # which Slate runs again for each notebook namespace.
 const SERVED = Dict{String,String}()
 
-asset_key(m::AFMModule) = "Anywidget." * m.name
+asset_key(m::FrontendModule) = "Anywidget." * m.name
 
 # Directory of an inline module: its source written once to a scratch directory.
 const INLINE_DIRS = Dict{String,String}()
-function _source_dir(m::AFMModule)
+function _source_dir(m::FrontendModule)
     dir = get!(() -> mktempdir(; cleanup=true), INLINE_DIRS, m.name)
     write(joinpath(dir, "index.js"), m.source)
     return dir
 end
 
 # URL of a file of a module, serving its directory.
-function _url(m::AFMModule, path::AbstractString, dir)
+function _url(m::FrontendModule, path::AbstractString, dir)
     Anywidget._isurl(path) && return String(path)
     key = asset_key(m)
     SERVED[key] = dir
@@ -41,7 +41,7 @@ function _url(m::AFMModule, path::AbstractString, dir)
     return ext_asset_url(key, path)
 end
 
-function _module_urls(m::AFMModule)
+function _module_urls(m::FrontendModule)
     kind = Anywidget.esm_kind(m)
     esm = kind === :source ? _url(m, "index.js", _source_dir(m)) : _url(m, m.esm, m.dir)
     css = String[_url(m, c, m.dir) for c in m.css]

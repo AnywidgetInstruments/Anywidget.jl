@@ -11,14 +11,14 @@ Julia 1.10 (LTS) and later; the Kaimon Slate integration needs Julia 1.12.
 
 ## Modules
 
-An [`AFMModule`](@ref) names an ES module and its stylesheets. The module is a
+An [`FrontendModule`](@ref) names an ES module and its stylesheets. The module is a
 file of a local directory, an absolute URL, or inline source text:
 
 ```julia
 using Anywidget
-local_mod = AFMModule("counter"; dir = "path/to/widget", esm = "counter.js", css = ["counter.css"])
-cdn_mod = AFMModule("confetti"; esm = "https://esm.sh/some-anywidget@1")
-inline_mod = AFMModule("hello"; source = "export default { render({ el }) { el.textContent = 'hello'; } };")
+local_mod = FrontendModule("counter"; dir = "path/to/widget", esm = "counter.js", css = ["counter.css"])
+cdn_mod = FrontendModule("confetti"; esm = "https://esm.sh/some-anywidget@1")
+inline_mod = FrontendModule("hello"; source = "export default { render({ el }) { el.textContent = 'hello'; } };")
 ```
 
 ## Widgets
@@ -29,7 +29,7 @@ dictionary:
 
 ```@example start
 using Anywidget
-counter = AFMModule("counter"; dir = joinpath(@__DIR__, "assets"), esm = "counter.js", css = ["counter.css"])
+counter = FrontendModule("counter"; dir = joinpath(@__DIR__, "assets"), esm = "counter.js", css = ["counter.css"])
 w = anywidget(counter; count = 3, label = :Clicks)
 w[:count] = 4
 widget_traits(w)

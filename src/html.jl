@@ -9,7 +9,7 @@ end
 _html_escape(s) = replace(String(s), "&" => "&amp;", "<" => "&lt;", ">" => "&gt;", "\"" => "&quot;")
 
 # URL of a local file of a module when its base URL is set, else nothing (inline).
-_url(m::AFMModule, path) =
+_url(m::FrontendModule, path) =
     if _isurl(path)
         path
     elseif m.base[] === nothing
@@ -18,11 +18,11 @@ _url(m::AFMModule, path) =
         m.base[] * path
     end
 
-_esm_text(m::AFMModule) = m.source !== nothing ? m.source : read(joinpath(m.dir, m.esm), String)
+_esm_text(m::FrontendModule) = m.source !== nothing ? m.source : read(joinpath(m.dir, m.esm), String)
 
 # Inline copies of a module (base64, so no text can close the element), once per
 # output or page. Returns the loader spec of the module.
-function _write_module(io::IO, m::AFMModule)
+function _write_module(io::IO, m::FrontendModule)
     esm = esm_kind(m) === :source ? nothing : _url(m, m.esm)
     if esm === nothing
         print(io, "<script type=\"text/plain\" data-afm-esm=\"", m.name, "\">")

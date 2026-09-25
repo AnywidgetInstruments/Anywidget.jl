@@ -13,6 +13,7 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 2026-09-25 | First version (phase 0, package 0.0.1) |
+| 0.2 | 2026-09-25 | `AFMModule` renamed `FrontendModule` (AW-MOD-006); unofficial status stated (AW-GEN-004) |
 
 ## 1. General
 
@@ -21,16 +22,18 @@ host-provided `model` (`get`, `set`, `save_changes`, `on`, `off`, `send`)
 | AW-GEN-001 | M | The package shall run on the current Julia release (1.13) and on the LTS release (1.10). |
 | AW-GEN-002 | M | The core package shall depend only on JSON.jl and on standard libraries; integrations with notebook hosts shall be package extensions. |
 | AW-GEN-003 | M | The package shall not require Python, pip, Node.js or network access, except to load a module given by URL. |
+| AW-GEN-004 | M | The documentation shall state that the package is an unofficial, community-maintained Julia host, not affiliated with the anywidget project. |
 
 ## 2. Modules
 
 | ID | P | Requirement |
 |---|---|---|
-| AW-MOD-001 | M | The package shall describe a front-end module (`AFMModule`) by a name, its ES module and its stylesheets. |
+| AW-MOD-001 | M | The package shall describe a front-end module (`FrontendModule`) by a name, its ES module and its stylesheets. |
 | AW-MOD-002 | M | The package shall accept the ES module as a file of a local directory, as an absolute URL (`http://`, `https://`), or as inline source text. |
 | AW-MOD-003 | M | When a module file given in a directory does not exist, the package shall throw an `ArgumentError` naming the file. |
 | AW-MOD-004 | M | When a module name contains other characters than letters, digits, `.`, `_` and `-`, the package shall throw an `ArgumentError`. |
 | AW-MOD-005 | S | The package shall let the base URL a module's files are served from be set (`set_asset_base!(mod, url)`), for pages that should not inline them. |
+| AW-MOD-006 | M | The type of a front-end module shall be named `FrontendModule` (not `AFMModule`, which repeats "module"). |
 
 ## 3. Widgets
 

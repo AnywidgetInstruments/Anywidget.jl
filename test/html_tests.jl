@@ -12,12 +12,12 @@
     for api in ("get:", "set(", "save_changes:", "on:", "off:", "send:")
         @test occursin(api, h)
     end
-    s = AFMModule("inline"; source="export default { render({ el }) { el.textContent = 'hi'; } };")
+    s = FrontendModule("inline"; source="export default { render({ el }) { el.textContent = 'hi'; } };")
     @test occursin("data-afm-esm=\"inline\"", sprint(show, MIME"text/html"(), Anywidget.Widget(s)))
 end
 
 @testitem "modules by URL (AW-HTML-004)" setup = [Fixtures] begin
-    u = AFMModule("remote"; esm="https://esm.sh/w@1", css=["https://example.org/w.css"])
+    u = FrontendModule("remote"; esm="https://esm.sh/w@1", css=["https://example.org/w.css"])
     h = sprint(show, MIME"text/html"(), Anywidget.Widget(u))
     @test occursin("https://esm.sh/w@1", h)
     @test occursin("https://example.org/w.css", h)
@@ -32,7 +32,7 @@ end
 
 @testitem "html page (AW-HTML-005)" setup = [Fixtures] begin
     m = Fixtures.counter()
-    s = AFMModule("other"; source="export default { render() {} };")
+    s = FrontendModule("other"; source="export default { render() {} };")
     p = html_page(Anywidget.Widget(m), Anywidget.Widget(m), Anywidget.Widget(s); title="A & B")
     @test startswith(p, "<!doctype html>")
     @test occursin("<title>A &amp; B</title>", p)

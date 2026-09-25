@@ -8,7 +8,7 @@ const FIXTURES = joinpath(@__DIR__, "..", "fixtures")
 
 @testset "Kaimon Slate extension" begin
     @test Ext !== nothing
-    counter = AFMModule("counter"; dir=FIXTURES, esm="counter.js", css=["counter.css"])
+    counter = FrontendModule("counter"; dir=FIXTURES, esm="counter.js", css=["counter.css"])
 
     @testset "to_widget (AW-SLATE-001)" begin
         w = to_widget(anywidget(counter; count=1, id="c1"))
@@ -18,13 +18,13 @@ const FIXTURES = joinpath(@__DIR__, "..", "fixtures")
         @test w.params["src"] == "/ext-assets/Anywidget.counter/counter.js"
         @test w.params["css"] == ["/ext-assets/Anywidget.counter/counter.css"]
         @test w.params["id"] == "c1"
-        remote = AFMModule("remote"; esm="https://esm.sh/w@1")
+        remote = FrontendModule("remote"; esm="https://esm.sh/w@1")
         @test to_widget(anywidget(remote)).params["src"] == "https://esm.sh/w@1"
     end
 
     @testset "served modules (AW-SLATE-002)" begin
         @test SlateExtensionsBase._ASSETS["Anywidget.counter"] == abspath(FIXTURES)
-        inline = AFMModule("inline"; source="export default { render() {} };")
+        inline = FrontendModule("inline"; source="export default { render() {} };")
         w = to_widget(anywidget(inline))
         @test w.params["src"] == "/ext-assets/Anywidget.inline/index.js"
         dir = SlateExtensionsBase._ASSETS["Anywidget.inline"]

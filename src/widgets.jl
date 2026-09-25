@@ -5,7 +5,7 @@
 
 A widget hosted by Anywidget.jl. A subtype implements
 
-- [`afm_module`](@ref)`(w)`: its [`AFMModule`](@ref);
+- [`afm_module`](@ref)`(w)`: its [`FrontendModule`](@ref);
 - [`widget_traits`](@ref)`(w)`: its trait dictionary, in JSON form;
 - [`message_id`](@ref)`(w)`: the id of its message channel.
 
@@ -15,7 +15,7 @@ the Kaimon Slate integration.
 abstract type AbstractAnywidget end
 
 """
-    afm_module(w::AbstractAnywidget) -> AFMModule
+    afm_module(w::AbstractAnywidget) -> FrontendModule
 
 The front-end module of a widget.
 """
@@ -36,7 +36,7 @@ The id of the widget's message channel, used by hosts to route messages.
 function message_id end
 
 """
-    Anywidget.Widget(mod::AFMModule; id = <unique>, traits...)
+    Anywidget.Widget(mod::FrontendModule; id = <unique>, traits...)
 
 The generic widget: a module and a trait dictionary, read and written like a
 dictionary (`w[:count]`, `w[:count] = 2`). Traits are stored in JSON form:
@@ -44,21 +44,21 @@ string keys, symbols as strings, tuples as arrays, named tuples as
 dictionaries. Not exported; [`anywidget`](@ref) builds one.
 """
 struct Widget <: AbstractAnywidget
-    mod::AFMModule
+    mod::FrontendModule
     id::String
     traits::Dict{String,Any}
 end
 
-function Widget(mod::AFMModule; id::AbstractString=new_id(), traits...)
+function Widget(mod::FrontendModule; id::AbstractString=new_id(), traits...)
     return Widget(mod, String(id), Dict{String,Any}(String(k) => jsonify(v) for (k, v) in traits))
 end
 
 """
-    anywidget(mod::AFMModule; id = <unique>, traits...) -> Anywidget.Widget
+    anywidget(mod::FrontendModule; id = <unique>, traits...) -> Anywidget.Widget
 
 A generic widget of module `mod` with the given traits.
 """
-anywidget(mod::AFMModule; kw...) = Widget(mod; kw...)
+anywidget(mod::FrontendModule; kw...) = Widget(mod; kw...)
 
 """
     new_id() -> String

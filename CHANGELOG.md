@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** `AFMModule` is renamed `FrontendModule`.
+
+### Added
+
+- The README and the documentation state that the package is unofficial and
+  not affiliated with the anywidget project.
+
 ## [0.0.1] - 2026-09-25
 
 Phase 0 of the roadmap: foundations.

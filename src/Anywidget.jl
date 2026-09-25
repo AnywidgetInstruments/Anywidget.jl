@@ -3,7 +3,7 @@
 
 Host [anywidget](https://anywidget.dev) front-end modules (AFM) from Julia. An
 AFM is an ES module exporting `{ initialize?, render }` that drives a model
-provided by the host. This package describes such modules ([`AFMModule`](@ref)),
+provided by the host. This package describes such modules ([`FrontendModule`](@ref)),
 binds them to trait dictionaries ([`AbstractAnywidget`](@ref),
 [`anywidget`](@ref)), and hosts them:
 
@@ -13,7 +13,7 @@ binds them to trait dictionaries ([`AbstractAnywidget`](@ref),
 
 ```julia
 using Anywidget
-counter = AFMModule("counter"; source = \"\"\"
+counter = FrontendModule("counter"; source = \"\"\"
 export default { render({ model, el }) { el.textContent = model.get("count"); } };
 \"\"\")
 anywidget(counter; count = 1)
@@ -25,7 +25,7 @@ using Base64: base64encode
 using JSON: JSON
 using UUIDs: uuid4
 
-export AFMModule, set_asset_base!
+export FrontendModule, set_asset_base!
 export AbstractAnywidget, afm_module, widget_traits, message_id, anywidget
 export Message, encode_buffer, send_message, set_transport!
 export html_page

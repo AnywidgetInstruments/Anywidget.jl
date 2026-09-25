@@ -9,3 +9,10 @@ end
     @test Set(keys(project["deps"])) ⊆ Set(["JSON", "Base64", "UUIDs"])
     @test haskey(project["weakdeps"], "SlateExtensionsBase")
 end
+
+@testitem "unofficial status stated (AW-GEN-004)" begin
+    root = pkgdir(Anywidget)
+    for f in ("README.md", joinpath("docs", "src", "index.md"))
+        @test occursin("not affiliated", replace(read(joinpath(root, f), String), r"\s+" => " "))
+    end
+end

@@ -1,7 +1,7 @@
 # Front-end modules (AW-MOD-*).
 
 """
-    AFMModule(name; dir = nothing, esm = "", css = String[], source = nothing)
+    FrontendModule(name; dir = nothing, esm = "", css = String[], source = nothing)
 
 A front-end module: an ES module exporting `{ initialize?, render }` and its
 stylesheets. The module is either
@@ -13,7 +13,7 @@ stylesheets. The module is either
 Each item of `css` is a file of `dir` or an absolute URL. `name` identifies
 the module in pages and in served URLs: letters, digits, `.`, `_` and `-`.
 """
-struct AFMModule
+struct FrontendModule
     name::String
     esm::String
     css::Vector{String}
@@ -24,7 +24,7 @@ end
 
 _isurl(s::AbstractString) = startswith(s, "http://") || startswith(s, "https://")
 
-function AFMModule(
+function FrontendModule(
     name::AbstractString;
     dir::Union{Nothing,AbstractString}=nothing,
     esm::AbstractString="",
@@ -43,7 +43,7 @@ function AFMModule(
         _check_file(name, d, c)
     end
     src = source === nothing ? nothing : String(source)
-    return AFMModule(String(name), String(esm), cssv, d, src, Ref{Union{Nothing,String}}(nothing))
+    return FrontendModule(String(name), String(esm), cssv, d, src, Ref{Union{Nothing,String}}(nothing))
 end
 
 function _check_file(name, dir, path)
@@ -54,11 +54,11 @@ function _check_file(name, dir, path)
 end
 
 """
-    esm_kind(mod::AFMModule) -> Symbol
+    esm_kind(mod::FrontendModule) -> Symbol
 
 Where the ES module comes from: `:source` (inline text), `:url` or `:file`.
 """
-esm_kind(m::AFMModule) =
+esm_kind(m::FrontendModule) =
     if m.source !== nothing
         :source
     elseif _isurl(m.esm)
@@ -68,15 +68,15 @@ esm_kind(m::AFMModule) =
     end
 
 """
-    set_asset_base!(mod::AFMModule, url::Union{AbstractString,Nothing})
+    set_asset_base!(mod::FrontendModule, url::Union{AbstractString,Nothing})
 
 Base URL the local files of `mod` are served from (for example where a
 documentation build copied them). The HTML display then loads them by URL
 instead of inlining them; `nothing` restores inlining (AW-MOD-005).
 """
-function set_asset_base!(m::AFMModule, url::Union{AbstractString,Nothing})
+function set_asset_base!(m::FrontendModule, url::Union{AbstractString,Nothing})
     m.base[] = url === nothing ? nothing : (endswith(url, "/") ? String(url) : url * "/")
     return m
 end
 
-Base.show(io::IO, m::AFMModule) = print(io, "AFMModule(", repr(m.name), ", ", esm_kind(m), ")")
+Base.show(io::IO, m::FrontendModule) = print(io, "FrontendModule(", repr(m.name), ", ", esm_kind(m), ")")

@@ -7,7 +7,7 @@ implements three functions. It then gets the HTML display,
 ```julia
 using Anywidget
 
-const MODULE = AFMModule("mywidgets"; dir = joinpath(@__DIR__, "..", "assets"),
+const MODULE = FrontendModule("mywidgets"; dir = joinpath(@__DIR__, "..", "assets"),
                          esm = "index.js", css = ["index.css"])
 
 struct Gauge <: AbstractAnywidget

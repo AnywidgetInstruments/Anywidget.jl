@@ -10,6 +10,10 @@ Bind an ES module to a trait dictionary and show it as standalone HTML
 [Kaimon Slate](https://github.com/kahliburke/KaimonSlate.jl) notebook through
 SlateAFM, with custom messages and binary buffers. No Python, no Node.js.
 
+> **Unofficial.** Anywidget.jl is a community-maintained Julia host for
+> [anywidget](https://anywidget.dev) front-end modules; it is not affiliated
+> with the anywidget project.
+
 > **Status: pre-alpha (0.0.1, phase 0).** See the
 > [specification](docs/src/specification.md) and the
 > [roadmap](docs/src/roadmap.md).
@@ -26,7 +30,7 @@ Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
 ```julia
 using Anywidget
 
-counter = AFMModule("counter"; source = """
+counter = FrontendModule("counter"; source = """
 export default {
   render({ model, el }) {
     const b = document.createElement("button");
