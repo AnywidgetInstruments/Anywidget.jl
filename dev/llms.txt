@@ -6,6 +6,7 @@
 - [Home](./)
 - [Getting started](./getting-started/)
 - [Hosts](./hosts/)
+- [PyPI anywidgets](./pypi/)
 - [Writing a widget package](./packages/)
 - [API reference](./api/)
 - [Specification](./specification/)
