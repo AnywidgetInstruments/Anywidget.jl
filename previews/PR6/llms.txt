@@ -1,0 +1,14 @@
+# Anywidget.jl
+
+> Host anywidget front-end modules (AFM) from Julia: standalone HTML in any environment showing HTML,
+> and Kaimon Slate notebooks through SlateAFM. Custom messages with binary buffers.
+
+- [Home](./)
+- [Getting started](./getting-started/)
+- [Hosts](./hosts/)
+- [PyPI anywidgets](./pypi/)
+- [Writing a widget package](./packages/)
+- [API reference](./api/)
+- [Specification](./specification/)
+- [Roadmap](./roadmap/)
+- [Full documentation as one text file](./llms-full.txt)
