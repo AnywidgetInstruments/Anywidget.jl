@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software in teaching material, a publication or a
+  product, please cite it as below.
+title: "Anywidget.jl: anywidget front-end modules in Julia"
+type: software
+authors:
+  - family-names: Celles
+    given-names: Sébastien
+    orcid: "https://orcid.org/0000-0001-9987-4338"
+    affiliation: "Université de Poitiers"
+version: 0.0.1
+license: BSD-3-Clause
+repository-code: "https://github.com/AnywidgetInstruments/Anywidget.jl"
+url: "https://anywidgetinstruments.github.io/Anywidget.jl/"
+abstract: >-
+  A Julia host for anywidget front-end modules: standalone HTML, Jupyter,
+  Pluto and Kaimon Slate, with binary messages and published anywidgets
+  loaded without Python.
+keywords:
+  - Julia
+  - anywidget
+  - widgets
+  - notebooks
+  - Jupyter
+  - Pluto
