@@ -68,4 +68,4 @@ just docs          # documentation, llms.txt and llms-full.txt
 
 ## License
 
-BSD 3-Clause, see [LICENSE.md](LICENSE.md).
+BSD 3-Clause, see [LICENSE](LICENSE).

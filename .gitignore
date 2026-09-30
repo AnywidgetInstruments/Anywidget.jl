@@ -21,7 +21,7 @@
 !ROADMAP.md
 !CODE_OF_CONDUCT.md
 !SECURITY.md
-!LICENSE.md
+!LICENSE
 !docs/src/*.md
 !docs/src/assets/*.png
 !.gitignore
