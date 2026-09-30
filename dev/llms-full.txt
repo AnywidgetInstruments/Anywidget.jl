@@ -17,7 +17,7 @@ hero:
       link: /hosts/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/s-celles/Anywidget.jl
+      link: https://github.com/AnywidgetInstruments/Anywidget.jl
 
 features:
   - icon: 🧩
@@ -81,7 +81,7 @@ anywidget(counter; count = 0)
 
 ```julia
 using Pkg
-Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
+Pkg.add(url = "https://github.com/AnywidgetInstruments/Anywidget.jl")
 ```
 
 Julia 1.10 (LTS) and later, tested on 1.13; the Kaimon Slate integration needs Julia 1.12 or later.
@@ -176,7 +176,7 @@ SlateAFM lives in the KaimonSlate.jl repository:
 ```julia
 using Pkg
 Pkg.add(url = "https://github.com/kahliburke/KaimonSlate.jl", subdir = "examples/extensions/SlateAFM")
-Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
+Pkg.add(url = "https://github.com/AnywidgetInstruments/Anywidget.jl")
 ```
 
 In the notebook:
@@ -290,7 +290,7 @@ Anywidget.widget_traits(g::Gauge) = g.traits
 Anywidget.message_id(g::Gauge) = g.id
 ```
 
-[AnywidgetInstruments.jl](https://github.com/s-celles/AnywidgetInstruments.jl)
+[AnywidgetInstruments.jl](https://github.com/AnywidgetInstruments/AnywidgetInstruments.jl)
 works this way: it ships the front end of anywidget-instruments and one
 constructor per widget class, with traits checked against its contract.
 
