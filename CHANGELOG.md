@@ -47,5 +47,5 @@ Phase 0 of the roadmap: foundations.
 - Documentation (Documenter.jl, DocumenterLandingPage.jl) with live widgets,
   `llms.txt` and `llms-full.txt`; EARS specification with MoSCoW priorities.
 
-[Unreleased]: https://github.com/s-celles/Anywidget.jl/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/s-celles/Anywidget.jl/releases/tag/v0.0.1
+[Unreleased]: https://github.com/AnywidgetInstruments/Anywidget.jl/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/AnywidgetInstruments/Anywidget.jl/releases/tag/v0.0.1

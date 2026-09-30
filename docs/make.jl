@@ -19,11 +19,13 @@ remotes = has_commit ? (;) : (; remotes=nothing)
 
 makedocs(;
     remotes...,
-    repo=Remotes.GitHub("s-celles", "Anywidget.jl"),
+    repo=Remotes.GitHub("AnywidgetInstruments", "Anywidget.jl"),
     sitename="Anywidget.jl",
     authors="Sébastien Celles",
     modules=[Anywidget],
-    format=Documenter.HTML(; prettyurls=true, canonical="https://s-celles.github.io/Anywidget.jl", edit_link="main"),
+    format=Documenter.HTML(;
+        prettyurls=true, canonical="https://anywidgetinstruments.github.io/Anywidget.jl", edit_link="main"
+    ),
     plugins=[LandingPage()],
     pages=PAGES,
     checkdocs=:exports,
@@ -47,5 +49,5 @@ write(joinpath(BUILD, "llms.txt"), summary)
 write(joinpath(BUILD, "llms-full.txt"), full)
 
 if get(ENV, "GITHUB_ACTIONS", "false") == "true"
-    deploydocs(; repo="github.com/s-celles/Anywidget.jl.git", devbranch="main", push_preview=true)
+    deploydocs(; repo="github.com/AnywidgetInstruments/Anywidget.jl.git", devbranch="main", push_preview=true)
 end

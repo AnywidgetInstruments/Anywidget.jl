@@ -21,6 +21,6 @@ Anywidget.widget_traits(g::Gauge) = g.traits
 Anywidget.message_id(g::Gauge) = g.id
 ```
 
-[AnywidgetInstruments.jl](https://github.com/s-celles/AnywidgetInstruments.jl)
+[AnywidgetInstruments.jl](https://github.com/AnywidgetInstruments/AnywidgetInstruments.jl)
 works this way: it ships the front end of anywidget-instruments and one
 constructor per widget class, with traits checked against its contract.

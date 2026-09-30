@@ -4,7 +4,7 @@
 
 ```julia
 using Pkg
-Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
+Pkg.add(url = "https://github.com/AnywidgetInstruments/Anywidget.jl")
 ```
 
 Julia 1.10 (LTS) and later, tested on 1.13; the Kaimon Slate integration needs Julia 1.12 or later.

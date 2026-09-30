@@ -38,7 +38,7 @@ SlateAFM lives in the KaimonSlate.jl repository:
 ```julia
 using Pkg
 Pkg.add(url = "https://github.com/kahliburke/KaimonSlate.jl", subdir = "examples/extensions/SlateAFM")
-Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
+Pkg.add(url = "https://github.com/AnywidgetInstruments/Anywidget.jl")
 ```
 
 In the notebook:

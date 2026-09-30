@@ -15,7 +15,7 @@ hero:
       link: /hosts/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/s-celles/Anywidget.jl
+      link: https://github.com/AnywidgetInstruments/Anywidget.jl
 
 features:
   - icon: 🧩

@@ -10,7 +10,7 @@ branch receives security fixes.
 Please do **not** open a public issue for a security problem.
 
 Report it privately through a
-[GitHub Security Advisory](https://github.com/s-celles/Anywidget.jl/security/advisories/new)
+[GitHub Security Advisory](https://github.com/AnywidgetInstruments/Anywidget.jl/security/advisories/new)
 (GHSA) of this repository. Include the version (package and Julia), the steps to reproduce, and the
 impact you expect.
 

@@ -1,7 +1,7 @@
 # Anywidget.jl
 
-[![CI](https://github.com/s-celles/Anywidget.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/s-celles/Anywidget.jl/actions/workflows/CI.yml)
-[![Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://s-celles.github.io/Anywidget.jl/dev/)
+[![CI](https://github.com/AnywidgetInstruments/Anywidget.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/AnywidgetInstruments/Anywidget.jl/actions/workflows/CI.yml)
+[![Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://anywidgetinstruments.github.io/Anywidget.jl/dev/)
 [![Aqua QA](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
 
 Host [anywidget](https://anywidget.dev) front-end modules (AFM) from Julia.
@@ -22,7 +22,7 @@ SlateAFM, with custom messages and binary buffers. No Python, no Node.js.
 
 ```julia
 using Pkg
-Pkg.add(url = "https://github.com/s-celles/Anywidget.jl")
+Pkg.add(url = "https://github.com/AnywidgetInstruments/Anywidget.jl")
 ```
 
 ## Quick start
@@ -55,7 +55,7 @@ knob = pypi_anywidget("wigglystuff"; class = "Knob", value = 30.0)
 ```
 
 Widget packages subtype `AbstractAnywidget`, as
-[AnywidgetInstruments.jl](https://github.com/s-celles/AnywidgetInstruments.jl)
+[AnywidgetInstruments.jl](https://github.com/AnywidgetInstruments/AnywidgetInstruments.jl)
 does, and get every host for free.
 
 ## Development
