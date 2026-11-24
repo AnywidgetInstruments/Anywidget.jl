@@ -1,7 +1,7 @@
 name = "Anywidget"
 uuid = "8fad67a4-a4e5-4856-8218-1f1a0df12dc2"
-authors = ["Sébastien Celles <s.celles@gmail.com>"]
 version = "0.0.1"
+authors = ["Sébastien Celles <s.celles@gmail.com>"]
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -23,13 +23,13 @@ Base64 = "1"
 Downloads = "1"
 JSON = "1"
 SHA = "0.7, 1"
-SlateExtensionsBase = "0.10"
+SlateExtensionsBase = "0.10, 0.11"
 TOML = "1"
 Test = "1"
 TestItemRunner = "1"
 UUIDs = "1"
-p7zip_jll = "16, 17"
 julia = "1.10"
+p7zip_jll = "16, 17"
 
 [extras]
 Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
